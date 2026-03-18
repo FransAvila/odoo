@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.notifications</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">                
+                <header> 
+                    <field name="is_new_product" invisible="1"/>
+                    <button name="action_remove_new_label"
+                            string="Validar Producto"
+                            type="object"
+                            class="oe_highlight"
+                            invisible="not is_new_product"/>
+                </header>
+            </xpath>
+            <xpath expr="//sheet/*[1]" position="before">
+                <widget name="web_ribbon"
+                    title="NUEVO"
+                    bg_color="text-bg-info"
+                    invisible="not is_new_product"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_template_search_inherited" model="ir.ui.view">
+        <field name="name">product.template.search.new.product</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='filter_to_sell']" position="after">
+                <filter string="Productos Nuevos" 
+                        name="new_products" 
+                        domain="[('is_new_product', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
