@@ -10,6 +10,7 @@
                     <div class="row mt16 o_settings_container">
                         <div class="col-12 col-lg-6 o_setting_box">
                             <div class="o_setting_right_pane">
+                            <!-- Cmpo para seleccionar los usuarios-->
                                 <label for="monitored_user_ids" style="font-weight: bold;"/>
                                 <div class="text-muted">
                                     Usuarios monitoreados al crear productos.
@@ -21,11 +22,12 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Campo para escribir el correo de notificación -->
                         <div class="col-12 col-lg-6 o_setting_box">
                             <div class="o_setting_right_pane">
                                 <label for="notification_email" style="font-weight: bold;"/>
                                 <div class="text-muted">
-                                    Correo que recibirá los informes de productos nuevos.
+                                    Correo que recibirá los informes de los nuevos productos.
                                 </div>
                                 <div class="content-group mt8">
                                     <field name="notification_email" 

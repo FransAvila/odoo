@@ -8,6 +8,7 @@
             <xpath expr="//sheet" position="before">                
                 <header> 
                     <field name="is_new_product" invisible="1"/>
+                    <!-- boton para validar el producto  -->
                     <button name="action_remove_new_label"
                             string="Validar Producto"
                             type="object"
@@ -15,6 +16,7 @@
                             invisible="not is_new_product"/>
                 </header>
             </xpath>
+            <!-- Liston de nuevo producto  -->
             <xpath expr="//sheet/*[1]" position="before">
                 <widget name="web_ribbon"
                     title="NUEVO"
@@ -24,6 +26,7 @@
         </field>
     </record>
 
+     <!-- Filtro de productos nuevos en la vista de búsqueda -->
     <record id="view_product_template_search_inherited" model="ir.ui.view">
         <field name="name">product.template.search.new.product</field>
         <field name="model">product.template</field>

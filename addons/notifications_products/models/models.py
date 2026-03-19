@@ -20,25 +20,12 @@ class ProductTemplate(models.Model):
                 'is_new_product': True,
                 'created_by_user_id': self.env.uid
             })
-            # Es mejor llamar a la función de notificación después de escribir los datos
+
             res._send_new_product_notification() 
         
         return res
-    
-    creator_label = fields.Char(string="Etiqueta de Creador", compute='creator_label')
-
-    @api.depends('is_new_product', 'create_uid')
-    def creator_label(self):  
-        users= self.env['res.users'].browse(self.env.id)
-        for record in self:
-            if record.is_new_product and users:
-                record.creator_label = f"Creado por: {users.name}"
-            else:
-                record.creator_label = ""
-        return record
-        
-        
-    # Funcion para eliminar la etiqueta de nuevo producto
+     
+    # Funcion para validar el producto, es la que elimina el liston del documento 
     def action_remove_new_label(self):
         self.write({'is_new_product': False})
     
